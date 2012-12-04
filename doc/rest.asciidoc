@@ -1,0 +1,57 @@
+RESTful design principles:
+--------------------------
+* A URL is tied to a resource using the @Path annotation. Clients access the resource using the URL.
+* Create, Read, Update, and Delete (CRUD) operations are accessed via PUT, GET, POST, and DELETE requests in the HTTP protocol.
+. PUT creates a new resource 
+. DELETE deletes a resource
+. GET retrieves the current state of a resource
+. POST updates a resources's state
+* Resources are decoupled from their representation, so that clients can request the data in a variety of different formats.
+* Stateful interactions require explicit state transfer, in the form of URL rewriting, cookies, and hidden form fields. State can also be embedded in response messages
+
+Creating a RESTful endpoint
+---------------------------
+* A RESTful endpoint is deployed as JavaEE web archive (WAR). 
+* JAX-RS annotations we usually used:
+. @Path 		Identifies the URI path that a resource class or class method will serve requests for
+. @Consumes 	Defines the media types that the methods of a resource class can accept
+. @Produces 	Defines the media type(s) that the methods of a resource class can produce
+. @GET 		Indicates that the annotated method responds to HTTP GET requests
+. @PUT 		Indicates that the annotated method responds to HTTP PUT requests
+. @POST 		Indicates that the annotated method responds to HTTP POST requests
+. @DELETE 	Indicates that the annotated method responds to HTTP DELETE requests
+* Package and build the endpoint
+To package the endpoint we create a simple web archive and include a web.xml
+
+
+What are RESTful Web Services?
+------------------------------
+* Java API for RESTful web services (JAX-RS, defined in JSR331), which is a server-side specification. ava API for RESTful Web Services over the HTTP protocol RESTEasy is an portable implementation of this specification which can run in any Servlet container. RESTeasy has innovated to bring JAX-RS to the client through the RESTEasy JAX-RS Client Framework.
+
+* RESTful web services are designed to expose APIs on the web. REST stands for Representational State Transfer. It aims to provide better performance, scalability, and flexibility than traditinoal web services, by allowing clients to access data and resources using predictable URLs. Many well-known public web services expose RESTful APIs
+
+* The Java 6 Enterprise Edition specification for RESTful services is JAX-RS. In the REST model, the server exposes APIs through specific URIs (typically URLs), and clients access those URIs to query or modify data. REST uses a stateless communication protocol. Typically, this is HTTP.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
