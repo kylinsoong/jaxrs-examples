@@ -1,4 +1,4 @@
-package com.kylin.jaxrs.helloworld;
+package org.jboss.resteasy.helloworld;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
@@ -29,8 +29,7 @@ public class HelloWorld {
 	@Path("/xml")
 	@Produces({ "application/xml" })
 	public String getHelloWorldXML() {
-		return "<xml><result>" + helloService.createHelloMessage("World")
-				+ "</result></xml>";
+		return "<xml><result>" + helloService.createHelloMessage("World") + "</result></xml>";
 	}
 
 }

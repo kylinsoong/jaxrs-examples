@@ -1,4 +1,4 @@
-package com.kylin.jaxrs.helloworld;
+package org.jboss.resteasy.helloworld;
 
 public class HelloService {
 

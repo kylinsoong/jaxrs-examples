@@ -10,7 +10,6 @@
     <name>Parent for JAX-RS Project</name>
 
     <modules>
-        <module>helloworld</module>
         <module>bookreserve</module>
     </modules>
 
