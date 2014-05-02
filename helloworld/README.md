@@ -36,17 +36,17 @@ _NOTE: The following build command assumes you have configured your Maven user s
 
         mvn clean package jboss-as:deploy
 
-4. This will deploy `target/jaxrs-helloworld.war` to the running instance of the server.
+4. This will deploy `target/helloworld.war` to the running instance of the server.
 
 
 Access the application 
 ---------------------
 
-The application is deployed to <http://localhost:8080/jaxrs-helloworld>.
+The application is deployed to <http://localhost:8080/helloworld>.
 
-The *XML* content can be viewed by accessing the following URL: <http://localhost:8080/jaxrs-helloworld/rest/xml> 
+The *XML* content can be viewed by accessing the following URL: <http://localhost:8080/helloworld/rest/xml> 
 
-The *JSON* content can be viewed by accessing this URL: <http://localhost:8080/jaxrs-helloworld/rest/json>
+The *JSON* content can be viewed by accessing this URL: <http://localhost:8080/helloworld/rest/json>
 
 
 Undeploy the Archive
