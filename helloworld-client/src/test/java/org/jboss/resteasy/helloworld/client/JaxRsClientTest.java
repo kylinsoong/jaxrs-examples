@@ -117,7 +117,7 @@ public class JaxRsClientTest {
             System.err.println(e);
         }
 
-        System.out.println("\n===============================================");
+        System.out.println("");
 
         return result;
     }
