@@ -12,6 +12,7 @@
     <modules>
         <module>helloworld</module>
         <module>helloworld-client</module>
+        <module>customer</module>
     </modules>
 
 </project>
