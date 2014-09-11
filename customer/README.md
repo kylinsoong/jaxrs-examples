@@ -16,7 +16,7 @@ Deploy `CustomerRESTWebSvc.war` to a running JBoss server(Assume JBoss EAP 6 run
 
 * Consume
 
-http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList
+[http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList](http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList)
 
 
 
