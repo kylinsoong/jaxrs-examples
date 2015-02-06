@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 
 @Path("/")
 public class HelloWorld {
-	
 	@Inject
 	HelloService helloService;
 

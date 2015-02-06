@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jboss.resteasy</groupId>
-    <artifactId>jaxrs-helloworld</artifactId>
+    <artifactId>jaxrs-helloworld-security</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
     <name>JAX-RS Helloworld</name>

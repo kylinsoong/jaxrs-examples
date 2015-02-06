@@ -1,0 +1,5 @@
+/core-service=management/security-realm=SSLRealm:add()
+
+/core-service=management/security-realm=SSLRealm/server-identity=ssl:add(keystore-path=wildfly.ssl.keystore, keystore-relative-to=jboss.server.config.dir,keystore-password=redhat, alias=wildfly.ssl, key-password=redhat)
+
+/subsystem=undertow/server=default-server/https-listener=https:add(socket-binding=https, security-realm=SSLRealm)

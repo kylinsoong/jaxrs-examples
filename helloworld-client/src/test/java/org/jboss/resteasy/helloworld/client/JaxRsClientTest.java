@@ -2,16 +2,13 @@ package org.jboss.resteasy.helloworld.client;
 
 import static org.junit.Assert.*;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
-import org.apache.http.client.ClientProtocolException;
-import org.jboss.resteasy.client.ClientRequest;
-import org.jboss.resteasy.client.ClientResponse;
+import org.jboss.resteasy.client.jaxrs.ResteasyClient;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -21,6 +18,7 @@ import org.junit.Test;
  * 
  * 
  */
+@Ignore
 public class JaxRsClientTest {
     /**
      * Request URLs pulled from system properties in pom.xml
@@ -75,49 +73,24 @@ public class JaxRsClientTest {
      * @param url The url of the RESTful service
      * @param mediaType The mediatype of the RESTful service
      */
-    private String runRequest(String url, MediaType mediaType) {
+    private String runRequest(String url, MediaType type) {
         String result = null;
 
         System.out.println("===============================================");
         System.out.println("URL: " + url);
-        System.out.println("MediaType: " + mediaType.toString());
+        System.out.println("MediaType: " + type.toString());
 
-        try {
-            // Using the RESTEasy libraries, initiate a client request
-            // using the url as a parameter
-            ClientRequest request = new ClientRequest(url);
-
-            // Be sure to set the mediatype of the request
-            request.accept(mediaType);
-
-            // Request has been made, now let's get the response
-            ClientResponse<String> response = request.get(String.class);
-
-            // Check the HTTP status of the request
-            // HTTP 200 indicates the request is OK
-            if (response.getStatus() != 200) {
-                throw new RuntimeException("Failed request with HTTP status: " + response.getStatus());
-            }
-
-            // We have a good response, let's now read it
-            BufferedReader br = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(response.getEntity().getBytes())));
-
-            // Loop over the br in order to print out the contents
-            System.out.println("\n*** Response from Server ***\n");
-            String output = null;
-            while ((output = br.readLine()) != null) {
-                System.out.println(output);
-                result = output;
-            }
-        } catch (ClientProtocolException cpe) {
-            System.err.println(cpe);
-        } catch (IOException ioe) {
-            System.err.println(ioe);
-        } catch (Exception e) {
-            System.err.println(e);
+        ResteasyClient client = new ResteasyClientBuilder().build();
+        ResteasyWebTarget target = client.target(url);
+        Response response = target.request().accept(type).get();
+        
+        if (response.getStatus() != 200) {
+            throw new RuntimeException("Failed request with HTTP status: " + response.getStatus());
         }
-
-        System.out.println("");
+        
+        response.bufferEntity();
+        
+        result = response.readEntity(String.class);
 
         return result;
     }

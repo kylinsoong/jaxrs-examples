@@ -11,6 +11,7 @@
 
     <modules>
         <module>helloworld</module>
+	<module>helloworld-security</module>
         <module>helloworld-client</module>
         <module>customer</module>
     </modules>

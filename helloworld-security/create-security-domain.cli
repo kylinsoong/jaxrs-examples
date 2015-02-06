@@ -1,0 +1,4 @@
+/subsystem=security/security-domain=RestDomain:add(cache-type=default)
+
+/subsystem=security/security-domain=RestDomain/authentication=classic:add(login-modules=[{"code"=>"RealmDirect", "flag"=>"required", "module-options"=>[("realm"=>"ManagementRealm"),("userProperties"=>"${jboss.server.config.dir}/mgmt-users.properties"),("rolesProperties"=>"${jboss.server.config.dir}/mgmt-groups.properties")]}])
+
