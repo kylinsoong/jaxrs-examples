@@ -40,21 +40,12 @@
     </dependencyManagement>
 
     <dependencies>
-
-        <!-- Import the CDI API, we use provided scope as the API is included in JBoss WildFly -->
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-        <!-- Import the Common Annotations API (JSR-250), we use provided scope 
-            as the API is included in JBoss WildFly -->
-        <dependency>
-            <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.2_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
+    
+    	<dependency>
+		  <groupId>io.swagger</groupId>
+		  <artifactId>swagger-jaxrs</artifactId>
+		  <version>1.5.2</version>
+		</dependency>
 
         <!-- Import the JSON API to build JSON Objects -->
         <dependency>
@@ -62,13 +53,14 @@
             <artifactId>jboss-json-api_1.0_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-
-        <!-- Import the JAX-RS API, we use provided scope as the API is included in JBoss WildFly -->
+        
         <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>jaxrs-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+        	<groupId>org.jboss.spec.javax.servlet</groupId>
+        	<artifactId>jboss-servlet-api_3.1_spec</artifactId>
+        	<scope>provided</scope>
+		</dependency>
+        
+
     </dependencies>
 
     <build>

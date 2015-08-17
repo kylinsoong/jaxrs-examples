@@ -1,5 +1,8 @@
 package org.jboss.resteasy.examples.petstore;
 
+import io.swagger.jaxrs.listing.ApiListingResource;
+import io.swagger.jaxrs.listing.SwaggerSerializers;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,17 +19,23 @@ public class PetstoreApplication extends Application {
     
     private Set<Object> singletons = new HashSet<Object>();
     
-    private Set<Class<?>> empty = new HashSet<Class<?>>();
     
     public PetstoreApplication(){
-         singletons.add(new HelloWorldResource());
-         singletons.add(new PetResource());
-         singletons.add(new PetStoreResource());
-         singletons.add(new UserResource());
     }
     @Override
     public Set<Class<?>> getClasses() {
-         return empty;
+        
+        Set<Class<?>> resources = new HashSet<Class<?>>();
+        
+        resources.add(ApiListingResource.class);
+        resources.add(SwaggerSerializers.class);
+        
+        resources.add(HelloWorldResource.class);
+        resources.add(PetResource.class);
+        resources.add(PetStoreResource.class);
+        resources.add(UserResource.class);
+        
+         return resources;
     }
     @Override
     public Set<Object> getSingletons() {
