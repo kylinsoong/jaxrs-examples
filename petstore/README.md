@@ -8,3 +8,6 @@ Build Souce Code, generate `petstore.war`, deploy it to WildFly, then test the f
 * http://localhost:8080/petstore/rest/store/order/1
 * http://localhost:8080/petstore/rest/user/user1
 
+## Best Practise For Deploy Swagger to WildFly/JBoss
+
+

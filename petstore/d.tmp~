@@ -1,0 +1,143 @@
+ +- io.swagger:swagger-jaxrs:jar:1.5.2:compile
+ |  +- com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.4.5:compile
+ |  |  +- com.fasterxml.jackson.core:jackson-core:jar:2.4.5:compile
+ |  |  \- org.yaml:snakeyaml:jar:1.12:compile
+ |  +- com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.4.5:compile
+ |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.4.5:compile
+ |  |  +- com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.4.5:compile
+ |  |  \- org.codehaus.woodstox:stax2-api:jar:3.1.4:compile
+ |  +- io.swagger:swagger-core:jar:1.5.2:compile
+ |  |  +- org.apache.commons:commons-lang3:jar:3.2.1:compile
+ |  |  +- org.slf4j:slf4j-api:jar:1.6.3:compile
+ |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.4.5:compile
+ |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-joda:jar:2.4.5:compile
+ |  |  |  \- joda-time:joda-time:jar:2.2:compile
+ |  |  +- io.swagger:swagger-models:jar:1.5.2:compile
+ |  |  |  \- io.swagger:swagger-annotations:jar:1.5.2:compile
+ |  |  \- javax.validation:validation-api:jar:1.1.0.Final:compile
+ |  +- javax.ws.rs:jsr311-api:jar:1.1.1:compile
+ |  +- org.reflections:reflections:jar:0.9.9:compile
+ |  |  +- org.javassist:javassist:jar:3.18.2-GA:compile
+ |  |  \- com.google.code.findbugs:annotations:jar:2.0.1:compile
+ |  +- com.google.guava:guava:jar:18.0:compile
+ |  \- com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:jar:2.4.5:compile
+ |     \- com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:jar:2.4.5:compile
+
+Dependencies Slimming
+
+1) Remove JavaEE Protocol libraries, due to these libraries be loaded default while JBoss Server start up.
+    jsr311-api-1.1.1.jar
+    validation-api-1.1.0.Final.jar
+
+2) Remove logging related jar
+    slf4j-api.jar
+
+3.1) jboss-deployment-structure.xml point to com.fasterxml.jackson
+    jackson-core-2.4.5.jar
+    jackson-annotations-2.4.5.jar
+    jackson-databind-2.4.5.jar
+   NOTE: Module "com.fasterxml.jackson" version is 2.4.2
+
+3.2) jboss-deployment-structure.xml point to com.google.guava
+    guava-18.0.jar
+   NOTE: Module "com.google.guava" version is 14.0.1
+
+3.3) jboss-deployment-structure.xml point to org.javassist
+    javassist-3.18.2-GA.jar
+   NOTE: Module "org.javassist" version is 3.18.1.GA-redhat-1
+
+3.4) jboss-deployment-structure.xml point to org.apache.commons.lang
+    commons-lang3-3.2.1.jar
+   NOTE: Module "org.apache.commons.lang" version is 3.3.2
+
+3.5) jboss-deployment-structure.xml point to org.yaml.snakeyaml
+    snakeyaml-1.12.jar
+   NOTE: Module "org.yaml.snakeyaml" version is 1.8.0.redhat-3
+
+3.6) jboss-deployment-structure.xml point to org.codehaus.woodstox
+    stax2-api-3.1.4.jar
+   NOTE: Module "org.codehaus.woodstox" version is 3.1.3.redhat-1
+
+3.7) jboss-deployment-structure.xml point to org.joda.time
+    stax2-api-3.1.4.jar
+   NOTE: Module "org.joda.time" version is 1.6.2.redhat-5
+
+4) Remove directly
+    annotations-2.0.1.jar
+
+ +- io.swagger:swagger-jaxrs:jar:1.5.2:compile
+ |  +- com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.4.5:compile
+ |  |  +- 
+ |  |  \- 
+ |  +- com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.4.5:compile
+ |  |  +- 
+ |  |  +- com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.4.5:compile
+ |  |  \- 
+ |  +- io.swagger:swagger-core:jar:1.5.2:compile
+ |  |  +- 
+ |  |  +- 
+ |  |  +- 
+ |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-joda:jar:2.4.5:compile
+ |  |  |  \- 
+ |  |  +- io.swagger:swagger-models:jar:1.5.2:compile
+ |  |  |  \- io.swagger:swagger-annotations:jar:1.5.2:compile
+ |  |  \- 
+ |  +- 
+ |  +- org.reflections:reflections:jar:0.9.9:compile
+ |  |  +-
+ |  |  \- 
+ |  +- 
+ |  \- com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:jar:2.4.5:compile
+ |     \- com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:jar:2.4.5:compile
+
+
+WEB-INF/lib/
+WEB-INF/lib/jackson-module-jaxb-annotations-2.4.5.jar
+WEB-INF/lib/reflections-0.9.9.jar
+WEB-INF/lib/
+WEB-INF/lib/jackson-dataformat-xml-2.4.5.jar
+WEB-INF/lib/jackson-dataformat-yaml-2.4.5.jar
+WEB-INF/lib/jackson-jaxrs-json-provider-2.4.5.jar
+WEB-INF/lib/joda-time-2.2.jar
+WEB-INF/lib/swagger-core-1.5.2.jar
+WEB-INF/lib/jackson-jaxrs-base-2.4.5.jar
+
+WEB-INF/lib/swagger-models-1.5.2.jar
+WEB-INF/lib/jackson-datatype-joda-2.4.5.jar
+WEB-INF/lib/swagger-jaxrs-1.5.2.jar
+WEB-INF/lib/swagger-annotations-1.5.2.jar
+WEB-INF/lib/
+
+
+
+
+
+
+com.google.code.findbugs:annotations:jar:2.0.1:compile
+org.javassist:javassist:jar:3.18.2-GA:compile
+com.fasterxml.jackson.core:jackson-core:jar:2.4.5:compile
+org.apache.commons:commons-lang3:jar:3.2.1:compile
+com.fasterxml.jackson.dataformat:jackson-dataformat-xml:jar:2.4.5:compile
+io.swagger:swagger-core:jar:1.5.2:compile
+com.fasterxml.jackson.datatype:jackson-datatype-joda:jar:2.4.5:compile
+org.yaml:snakeyaml:jar:1.12:compile
+io.swagger:swagger-models:jar:1.5.2:compile
+com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:jar:2.4.5:compile
+
+javax.ws.rs:jsr311-api:jar:1.1.1:compile
+joda-time:joda-time:jar:2.2:compile
+io.swagger:swagger-jaxrs:jar:1.5.2:compile
+org.codehaus.woodstox:stax2-api:jar:3.1.4:compile
+com.fasterxml.jackson.core:jackson-annotations:jar:2.4.5:compile
+com.google.guava:guava:jar:18.0:compile
+io.swagger:swagger-annotations:jar:1.5.2:compile
+com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.4.5:compile
+com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:2.4.5:compile
+org.reflections:reflections:jar:0.9.9:compile
+
+com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:jar:2.4.5:compile
+javax.validation:validation-api:jar:1.1.0.Final:compile
+org.slf4j:slf4j-api:jar:1.6.3:compile
+com.fasterxml.jackson.core:jackson-databind:jar:2.4.5:compile
+
+

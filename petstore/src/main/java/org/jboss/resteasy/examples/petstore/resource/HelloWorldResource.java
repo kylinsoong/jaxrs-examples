@@ -3,11 +3,11 @@ package org.jboss.resteasy.examples.petstore.resource;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-import javax.json.Json;
-import javax.json.JsonObject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+
+import org.jboss.resteasy.examples.petstore.model.HelloWorld;
 
 
 @Path("/helloworld")
@@ -23,8 +23,8 @@ public class HelloWorldResource {
     @Path("json")
     @Produces({ "application/json" })
     @ApiOperation(value = "get helloworld json", notes = "")
-    public JsonObject getHelloWorldJSON() {
-        return Json.createObjectBuilder().add("result", "Hello World").build();
+    public HelloWorld getHelloWorldJSON() {
+        return new HelloWorld("HelloWorld");
     }
 
     /**
