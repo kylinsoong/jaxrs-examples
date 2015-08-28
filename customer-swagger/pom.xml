@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.jboss.resteasy.example</groupId>
-    <artifactId>customer-swagger</artifactId>
+    <artifactId>customer</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
     <name>JAX-RS Customer Example</name>
@@ -13,7 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.jboss.maven.plugin>7.4.Final</version.jboss.maven.plugin>
-        <version.org.jboss.bom.jboss-javaee-6.0-with-tools>1.0.7.Final</version.org.jboss.bom.jboss-javaee-6.0-with-tools>
+        <version.jboss.spec.javaee.7.0>1.0.0.Final</version.jboss.spec.javaee.7.0>
         <version.war.plugin>2.1.1</version.war.plugin>
         <version.compiler.plugin>2.3.1</version.compiler.plugin>
         <maven.compiler.target>1.7</maven.compiler.target>
@@ -23,9 +23,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.jboss.bom</groupId>
-                <artifactId>jboss-javaee-6.0-with-tools</artifactId>
-                <version>${version.org.jboss.bom.jboss-javaee-6.0-with-tools}</version>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-7.0</artifactId>
+                <version>${version.jboss.spec.javaee.7.0}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -33,36 +33,84 @@
     </dependencyManagement>
 
     <dependencies>
-    
-    	<dependency>
-            <groupId>org.wildfly.swarm</groupId>
-            <artifactId>wildfly-swarm-jaxrs</artifactId>
-            <version>1.0.0.Alpha3</version>
-        </dependency>
-        
         <dependency>
-            <groupId>org.wildfly.swarm</groupId>
-            <artifactId>wildfly-swarm-jaxrs</artifactId>
-            <version>1.0.0.Alpha3</version>
-        </dependency>
-        
-        <dependency>
-		  <groupId>com.wordnik</groupId>
-		  <artifactId>swagger-jaxrs_2.10</artifactId>
-		  <version>1.3.12</version>
+		  <groupId>io.swagger</groupId>
+		  <artifactId>swagger-jaxrs</artifactId>
+		  <version>1.5.2</version>
+		  <exclusions>
+		  	<exclusion>
+		  		<groupId>javax.ws.rs</groupId>
+		  		<artifactId>jsr311-api</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>javax.validation</groupId>
+		  		<artifactId>validation-api</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>org.slf4j</groupId>
+		  		<artifactId>slf4j-api</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>com.fasterxml.jackson.core</groupId>
+		  		<artifactId>*</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>com.google.guava</groupId>
+		  		<artifactId>guava</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>org.javassist</groupId>
+		  		<artifactId>javassist</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>org.apache.commons</groupId>
+		  		<artifactId>commons-lang3</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>org.yaml</groupId>
+		  		<artifactId>snakeyaml</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>org.codehaus.woodstox</groupId>
+		  		<artifactId>stax2-api</artifactId>
+		  	</exclusion>
+		  	<exclusion>
+		  		<groupId>joda-time</groupId>
+		  		<artifactId>joda-time</artifactId>
+		  	</exclusion>
+		  </exclusions>
 		</dependency>
-
+        
+        <dependency>
+        	<groupId>org.jboss.spec.javax.servlet</groupId>
+        	<artifactId>jboss-servlet-api_3.1_spec</artifactId>
+        	<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>jaxrs-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+		
     </dependencies>
 
     <build>
-        <finalName>CustomerRESTWebSvc</finalName>
+        <finalName>customer</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>${version.war.plugin}</version>
                 <configuration>
+               <!-- Java EE 6 doesn't require web.xml, Maven needs to catch up! -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
+            </plugin>
+            <!-- JBoss AS plugin to deploy war -->
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                <version>${version.jboss.maven.plugin}</version>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -72,19 +120,6 @@
                     <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.wildfly.swarm</groupId>
-                <artifactId>wildfly-swarm-plugin</artifactId>
-                <version>1.0.0.Alpha3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>package</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            
             
         </plugins>
     </build>

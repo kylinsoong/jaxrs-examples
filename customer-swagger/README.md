@@ -8,7 +8,7 @@ Maven build commands:
 mvn clean install
 ~~~
 
-will generate deployment war `CustomerRESTWebSvc.war`.
+will generate deployment war `customer.war`.
 
 * Deploy
 
@@ -16,7 +16,7 @@ Deploy `CustomerRESTWebSvc.war` to a running JBoss server(Assume JBoss EAP 6 run
 
 * Consume
 
-[http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList](http://localhost:8080/CustomerRESTWebSvc/MyRESTApplication/customerList)
+[http://localhost:8080/customer/customer/customerList](http://localhost:8080/customer/customer/customerList)
 
 
 

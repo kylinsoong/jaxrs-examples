@@ -29,7 +29,8 @@ public class PetStoreResource {
     @GET
     @Path("/order/{orderId}")
     @ApiOperation(value = "Find purchase order by ID", notes = "For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions",response = Order.class)
-    @ApiResponses(value = { @ApiResponse(code = 400, message = "Invalid ID supplied"),@ApiResponse(code = 404, message = "Order not found") })
+    @ApiResponses({})
+//    @ApiResponses(value = { @ApiResponse(code = 400, message = "Invalid ID supplied"),@ApiResponse(code = 404, message = "Order not found") })
     public Response getOrderById(@ApiParam(value = "ID of pet that needs to be fetched", allowableValues = "range[1,5]", required = true) @PathParam("orderId") Long orderId) throws NotFoundException {
       Order order = storeData.findOrderById(orderId);
       if (null != order) {

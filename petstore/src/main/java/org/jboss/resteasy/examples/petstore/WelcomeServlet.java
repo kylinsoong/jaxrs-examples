@@ -18,20 +18,13 @@ public class WelcomeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String location = buildLocation(req, resp);
+        String path = req.getContextPath();
+        String basePath = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + path + "/";
+        String base = path + "/api.html";
+        String swagger = "rest/swagger.json";
+        String param = "/url=" + basePath + swagger;
+        String location = base + "?" + param;
         resp.sendRedirect(location);
-    }
-
-    private String buildLocation(HttpServletRequest request, HttpServletResponse resp) {
-        String path = request.getContextPath();
-        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
-//        System.out.println(path);
-//        System.out.println(basePath);
-        String base = path + "/teiid.html";
-        String restPrefix = "rest";
-        String swagger = "/swagger.json";
-        String param = "/url=" + basePath + restPrefix + swagger;
-        return base + "?" + param;
     }
 
 }

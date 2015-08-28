@@ -3,30 +3,79 @@
   
   <display-name>CustomerRESTWebSvc</display-name>
   
-  <servlet>
-    <servlet-name>Resteasy</servlet-name>
-    <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  
-  <servlet>
-        <servlet-name>Bootstrap</servlet-name>
-        <servlet-class>org.jboss.resteasy.examples.customer.Bootstrap</servlet-class>
-        <load-on-startup>2</load-on-startup>
-    </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>Resteasy</servlet-name>
-    <url-pattern>/*</url-pattern>
-  </servlet-mapping>
-  
   <context-param>
     <param-name>javax.ws.rs.Application</param-name>
-    <param-value>org.jboss.resteasy.examples.customer.MyRESTApplication</param-value>
+    <param-value>org.teiid.jboss.rest.MyRESTApplication</param-value>
   </context-param>
+  
+  <!-- 
+  <context-param>
+      <param-name>resteasy.servlet.mapping.prefix</param-name>
+      <param-value>/rest</param-value>
+  </context-param>
+  -->
   
   <listener>
     <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
   </listener>
-
+  
+  
+  
+  <servlet>
+  		<servlet-name>BootstrapServlet</servlet-name>
+  		<servlet-class>org.teiid.jboss.rest.BootstrapServlet</servlet-class>
+  		<load-on-startup>2</load-on-startup>
+  	</servlet>
+  
+  <!-- 
+  <servlet>
+    <servlet-name>RestDataservice</servlet-name>
+    <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>welcome</servlet-name>
+  	<jsp-file>/api.html</jsp-file>
+  </servlet>
+   
+  
+  <servlet-mapping>
+    <servlet-name>RestDataservice</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+  
+  -->
+  <servlet-mapping>
+  		<servlet-name>BootstrapServlet</servlet-name>
+  		<url-pattern>/api</url-pattern>
+  	</servlet-mapping>
+  
+  <!--  
+  <servlet-mapping>
+  	<servlet-name>welcome</servlet-name>
+  	<url-pattern>/api.html</url-pattern>
+  </servlet-mapping>
+  
+  -->
+  
+  <filter>
+      <filter-name>Resteasy</filter-name>
+      <filter-class>org.jboss.resteasy.plugins.server.servlet.FilterDispatcher</filter-class>
+  </filter>
+  
+  <filter>
+        <filter-name>ApiOriginFilter</filter-name>
+        <filter-class>org.teiid.jboss.rest.ApiOriginFilter</filter-class>
+    </filter>
+    
+    <filter-mapping>
+        <filter-name>Resteasy</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>ApiOriginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+  
+  
 </web-app>

@@ -14,9 +14,19 @@
   	<servlet-class>org.jboss.resteasy.examples.petstore.WelcomeServlet</servlet-class>
   </servlet>
   
+   <servlet>
+  		<servlet-name>teiid</servlet-name>
+  		<jsp-file>/api.html</jsp-file>
+	</servlet>
+  
 	<servlet-mapping>
 		<servlet-name>welcomeServlet</servlet-name>
-		<url-pattern>/welcome</url-pattern>
+		<url-pattern>/api</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+  		<servlet-name>teiid</servlet-name>
+  		<url-pattern>/api.html</url-pattern>
 	</servlet-mapping>
   
     <filter>
@@ -30,7 +40,29 @@
     </filter-mapping>
     
     <welcome-file-list>
-    	<welcome-file>welcome</welcome-file>
+    	<welcome-file>api</welcome-file>
     </welcome-file-list>
+    
+    <security-role>
+        <description>security role</description>
+        <role-name>rest</role-name>
+    </security-role>
+
+    <security-constraint>
+        <display-name>require valid user</display-name>
+        <web-resource-collection>
+            <web-resource-name>PetStore Application</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>pet</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>yourdomain.com</realm-name>
+    </login-config>
+    
 
 </web-app>
