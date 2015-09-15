@@ -1,0 +1,52 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	 <parent>
+                <artifactId>exceptionMapper-parent</artifactId>
+                <groupId>org.jboss.resteasy.examples</groupId>
+                <version>1.0.0</version>
+        </parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>exceptionMapper-ServletDispatcher</artifactId>
+	<packaging>war</packaging>
+
+	<name>JBoss RestEasy ExceptionMapper ServletDispatcher</name>
+	<description>JBoss RestEasy ExceptionMapper ServletDispatcher</description>
+    
+    <dependencies>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+      <finalName>a</finalName>
+       <plugins>
+       
+        <!-- Maven War file generator plugin -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <configuration>
+                <webResources>
+                    <resource>
+                        <directory>${basedir}/src/main/java</directory>
+                        <targetPath>WEB-INF/classes</targetPath>
+                        <includes>
+                            <include>**/*.properties</include>
+                            <include>**/*.xml</include>
+                            <include>**/*.css</include>
+                            <include>**/*.html</include>
+                        </includes>
+                    </resource>
+                </webResources>
+            </configuration>
+        </plugin>
+       </plugins>
+    </build>
+
+</project>

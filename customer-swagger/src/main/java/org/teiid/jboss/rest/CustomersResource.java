@@ -21,7 +21,7 @@ public class CustomersResource {
     private static final String XMLFILE = "customerList.xml";
 
     @GET
-    @Path("customerList")
+    @Path("/customerList")
     @Produces({ MediaType.APPLICATION_XML })
     @ApiOperation("get Customer List")
     @ApiResponses({})
