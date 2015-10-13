@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.swagger.examples</groupId>
+    <artifactId>swagger-parser-test</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <name>Swagger Parser Test</name>
+    <description>Swagger Parse Test</description>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+        
+        <version.jboss.spec.javaee.7.0>1.0.0.Final</version.jboss.spec.javaee.7.0>
+        
+        <version.war.plugin>2.5</version.war.plugin>
+        <version.compiler.plugin>3.1</version.compiler.plugin>
+        
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-parser</artifactId>
+			<version>1.0.10</version>
+		</dependency> 
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${version.compiler.plugin}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+    </build>
+</project>
+
