@@ -72,8 +72,8 @@
                     <version>${version.junit}</version>
                 </dependency>
             <dependency>
-                <groupId>org.apache.cxf.rs.examples.intro</groupId>
-                <artifactId>service</artifactId>
+                <groupId>org.apache.cxf.rs.examples</groupId>
+                <artifactId>jaxrs-intro-model</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
@@ -89,6 +89,7 @@
 
     <modules>
         <module>service</module>
+	<module>model</module>
         <module>client</module>
     </modules>
 
@@ -125,6 +126,13 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
                     <version>1.2</version>
+		    <executions>
+                            <execution>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                 </plugin>
         	<plugin>
           	    <groupId>org.wildfly.swarm</groupId>
@@ -138,6 +146,12 @@
         	    </execution>
          	 </executions>
        		 </plugin>
+		<plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>2.4.0</version>
+                    <extensions>true</extensions>
+                </plugin>
             </plugins>
         </pluginManagement>
 	<plugins>

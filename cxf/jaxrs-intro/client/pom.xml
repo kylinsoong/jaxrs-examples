@@ -19,9 +19,22 @@
         <artifactId>cxf-rt-rs-client</artifactId>
     </dependency>
     <dependency>
-        <groupId>org.apache.cxf.rs.examples.intro</groupId>
-        <artifactId>service</artifactId>
+        <groupId>org.apache.cxf.rs.examples</groupId>
+        <artifactId>jaxrs-intro-model</artifactId>
     </dependency>
 
   </dependencies>
+  
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>exec-maven-plugin</artifactId>
+              <configuration>
+                  <mainClass>org.apache.cxf.rs.examples.RESTClient</mainClass>
+              </configuration>
+          </plugin>
+      </plugins>
+  </build>
+  
 </project>
