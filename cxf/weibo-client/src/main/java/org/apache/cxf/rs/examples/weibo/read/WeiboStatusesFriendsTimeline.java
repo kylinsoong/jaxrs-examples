@@ -24,7 +24,9 @@ public class WeiboStatusesFriendsTimeline {
         Response resp = wc.get(); 
         if(resp.getStatus() == 200) {
             IOUtils.copy((InputStream) resp.getEntity(), System.out);
-        }  
+        } else {
+            IOUtils.copy((InputStream) resp.getEntity(), System.out);
+        } 
 
     }
 

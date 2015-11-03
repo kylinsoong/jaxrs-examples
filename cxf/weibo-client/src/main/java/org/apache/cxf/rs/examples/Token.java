@@ -8,5 +8,5 @@ package org.apache.cxf.rs.examples;
  */
 public class Token {
 
-    public static final String TOKEN = "2.00PZtDyBBfC2OE91c7a884547pNg4E";
+    public static final String TOKEN = "2.00PZtDyBBfC2OE0d5037de290sImQE";
 }

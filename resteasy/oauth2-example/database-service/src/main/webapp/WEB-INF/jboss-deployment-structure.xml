@@ -1,0 +1,10 @@
+<jboss-deployment-structure>
+    <deployment>
+        <!-- 
+        <dependencies>
+            <module name="org.jboss.resteasy.skeleton-key" />
+        </dependencies>
+        -->
+    </deployment>
+    
+</jboss-deployment-structure>

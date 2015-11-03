@@ -1,0 +1,153 @@
+<!--
+    Copyright (C) 2010 Talend Inc. - www.talend.com
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.jboss.resteasy.examples</groupId>
+    <artifactId>oauth2-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>JAX-RS OAuth2 Example</name>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.war.plugin>2.1.1</version.war.plugin>
+        <version.compiler.plugin>3.1</version.compiler.plugin>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.7</maven.compiler.source>
+	<version.junit>4.11</version.junit>
+	<version.wildfly-swarm>1.0.0.Alpha4</version.wildfly-swarm>
+	<resteasy.version>3.0.13.Final</resteasy.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+	    <dependency>
+              <groupId>org.wildfly.swarm</groupId>
+              <artifactId>wildfly-swarm-undertow</artifactId>
+              <version>${version.wildfly-swarm}</version>
+            </dependency>
+	    <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jaxrs</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+	    <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>skeleton-key-core</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+	    <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-client</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+	    <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-jackson-provider</artifactId>
+                <version>${resteasy.version}</version>
+            </dependency>
+	    <dependency>
+	        <groupId>org.jboss.spec.javax.servlet</groupId>
+		<artifactId>jboss-servlet-api_3.1_spec</artifactId>
+		<version>1.0.0.Final</version>
+	    </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${version.junit}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+	<dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <modules>
+        <module>customer-app</module>
+	<module>product-app</module>
+        <module>database-service</module>
+	<module>auth-server</module>
+	<module>client-grant</module>
+	<module>third-party</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+		    <version>${version.compiler.plugin}</version>
+                        <configuration>
+                            <source>${maven.compiler.source}</source>
+                            <target>${maven.compiler.target}</target>
+                            <showDeprecation>false</showDeprecation>
+                            <showWarnings>false</showWarnings>
+                        </configuration>
+                </plugin>
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${version.war.plugin}</version>
+		    <configuration>
+          		<failOnMissingWebXml>false</failOnMissingWebXml>
+        	    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <configuration>
+                        <downloadSources>true</downloadSources>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.2</version>
+		    <executions>
+                            <execution>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                </plugin>
+        	<plugin>
+          	    <groupId>org.wildfly.swarm</groupId>
+          	    <artifactId>wildfly-swarm-plugin</artifactId>
+          	    <version>${version.wildfly-swarm}</version>
+          		<executions>
+            		<execution>
+              		<goals>
+	                <goal>package</goal>
+	              </goals>
+        	    </execution>
+         	 </executions>
+       		 </plugin>
+		<plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>2.4.0</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+	<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
