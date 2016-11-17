@@ -15,7 +15,7 @@
 		
 		<version.jboss.spec.javaee.7.0>1.0.0.Final</version.jboss.spec.javaee.7.0>
 		
-		<version.resteasy>3.0.0.Final</version.resteasy>
+		<version.resteasy>3.0.16.Final</version.resteasy>
 		
 		<version.junit>4.10</version.junit>
 		
@@ -26,13 +26,6 @@
 	
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-                <groupId>org.jboss.spec</groupId>
-                <artifactId>jboss-javaee-7.0</artifactId>
-                <version>${version.jboss.spec.javaee.7.0}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <dependency>
                 <groupId>org.jboss.resteasy</groupId>
                 <artifactId>resteasy-client</artifactId>
@@ -62,15 +55,17 @@
 	    <groupId>org.jboss.resteasy</groupId>
 	    <artifactId>resteasy-client</artifactId>
 	</dependency>
-	<dependency>
-    	<groupId>org.jboss.resteasy</groupId>
-        <artifactId>jaxrs-api</artifactId>
-        <scope>provided</scope>
-    </dependency>
     <dependency>
     	<groupId>org.jboss.resteasy</groupId>
         <artifactId>resteasy-jaxrs</artifactId>
     </dependency>
+    
+    <dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+		
 	<dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
